@@ -39,23 +39,24 @@ const Contact = () => {
 
         <div className="space-y-8 text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] leading-relaxed text-center">
           <p className="text-gray-400">
-            My work sits between technology, creativity, and innovation.
+            My work sits between <span style={{ color: "white", fontWeight: "bold" }}>technology</span>, <span style={{ color: "white", fontWeight: "bold" }}>creativity</span>, and <span style={{ color: "white", fontWeight: "bold" }}>innovation</span>.
           </p>
           
           <p className="text-gray-400">
-            When a project needs clarity, structure, <br /> and passion, I am available.
+            When a project needs <span style={{ color: "white", fontWeight: "bold" }}>clarity</span>, <span style={{ color: "white", fontWeight: "bold" }}>structure</span>, <br /> and <span style={{ color: "white", fontWeight: "bold" }}>passion</span>, I am available.
           </p>
           
           <p className="text-gray-400">
-            If the work makes sense, we can talk.
+            If the work makes sense, <span style={{ color: "white", fontWeight: "bold" }}>we can talk.</span>
           </p>
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-gray-400 text-[20px] md:text-[20px] mb-3">Email</p>
+          <p className="text-white text-[20px] md:text-[25px] mb-3">Email</p>
           <a 
             href="mailto:rhiobimoprakoso.s@gmail.com" 
             className="text-white text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[40px] hover:text-gray-300 transition-colors"
+            style={{ fontWeight: "bold" }}
           >
             rhiobimoprakoso.s@gmail.com
           </a>

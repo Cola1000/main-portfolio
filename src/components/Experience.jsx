@@ -35,25 +35,48 @@ const ExperienceCard = ({ experience, onClick, isActive, isMobile }) => {
   );
 };
 
-const ExperienceDetails = ({ experience }) => {
+import { AnimatePresence, motion as m } from "framer-motion";
+
+const ExperienceDetails = ({ experience, keyProp }) => {
   return (
-    <div className="mt-5">
-      <ul className="max-w-7xl list-none space-y-8 border-4 lg:border-8 rounded-xl lg:rounded-3xl p-6">
-        {experience.details.map((detail, index) => (
-          <li
-            key={`experience-detail-${index}`}
-            className="text-slate-500 font-semibold text-[10px] xs:text-[14px] md:text-[18px] lg:text-[22px] xl:text-[28px] lg:leading-[30px]"
-            dangerouslySetInnerHTML={{ __html: detail }}
-          />
-        ))}
-      </ul>
-    </div>
+    <AnimatePresence mode="wait">
+      <m.div
+        key={keyProp}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        className="mt-5"
+      >
+        <ul className="max-w-7xl list-none space-y-8 border-4 lg:border-8 rounded-xl lg:rounded-3xl p-6">
+        
+        <div className="flex flex-col items-center mb-6">
+          {experience.image && (
+            <img
+              src={experience.image}
+              alt={experience.title}
+              className="w-40 h-40 object-contain rounded-xl mb-4"
+            />
+          )}
+        </div>
+
+          {experience.details.map((detail, index) => (
+            <li
+              key={`experience-detail-${index}`}
+              className="text-slate-500 font-semibold text-[10px] xs:text-[14px] md:text-[18px] lg:text-[22px] xl:text-[28px] lg:leading-[30px]"
+              dangerouslySetInnerHTML={{ __html: detail }}
+            />
+          ))}
+        </ul>
+      </m.div>
+    </AnimatePresence>
   );
 };
 
 const Experience = () => {
   const [selectedJob, setSelectedJob] = useState(experiences[0]);
   const [isMobile, setIsMobile] = useState(false);
+  const [detailsKey, setDetailsKey] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -82,7 +105,10 @@ const Experience = () => {
             <ExperienceCard
               key={`experience-${index}`}
               experience={experience}
-              onClick={() => setSelectedJob(experience)}
+              onClick={() => {
+                setSelectedJob(experience);
+                setDetailsKey((k) => k + 1);
+              }}
               isActive={selectedJob === experience}
               isMobile={isMobile}
             />
@@ -90,7 +116,7 @@ const Experience = () => {
         </div>
 
         <div className="flex justify-end z-10 sm:block hidden">
-          <ExperienceDetails experience={selectedJob} />
+          <ExperienceDetails experience={selectedJob} keyProp={detailsKey} />
         </div>
       </div>
     </div>

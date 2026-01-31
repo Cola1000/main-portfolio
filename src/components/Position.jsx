@@ -21,12 +21,59 @@ const produceLetterSpans = (text, isHovered, isFlippingOut) => {
 
 const Position = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const animationTimeoutRef = useRef(null);
+  const pendingStateRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (isAnimating) {
+      // Queue the state change
+      pendingStateRef.current = true;
+    } else {
+      setIsAnimating(true);
+      setIsHovered(true);
+      const animationDuration = 400 + (17 * 50);
+      animationTimeoutRef.current = setTimeout(() => {
+        setIsAnimating(false);
+        // Check if there's a pending state change
+        if (pendingStateRef.current !== null) {
+          const pendingState = pendingStateRef.current;
+          pendingStateRef.current = null;
+          if (pendingState === false) {
+            handleMouseLeave();
+          }
+        }
+      }, animationDuration);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isAnimating) {
+      // Queue the state change
+      pendingStateRef.current = false;
+    } else {
+      setIsAnimating(true);
+      setIsHovered(false);
+      const animationDuration = 400 + (14 * 50);
+      animationTimeoutRef.current = setTimeout(() => {
+        setIsAnimating(false);
+        // Check if there's a pending state change
+        if (pendingStateRef.current !== null) {
+          const pendingState = pendingStateRef.current;
+          pendingStateRef.current = null;
+          if (pendingState === true) {
+            handleMouseEnter();
+          }
+        }
+      }, animationDuration);
+    }
+  };
 
   return (
     <div 
       className="relative cursor-default font-medium text-white text-[16px] xs:text-[20px] sm:text-[30px] md:text-[36px] 2xl:text-[66px] leading-[32px] 2xl:leading-[40px] w-full flex justify-center items-center"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="absolute inset-0 top-[-30px] sm:top-[-10px] lg:top-0 flex flex-col">
         <div 

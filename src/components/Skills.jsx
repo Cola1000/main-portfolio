@@ -35,25 +35,37 @@ const SkillsCard = ({ skill, onClick, isActive, isMobile }) => {
   );
 };
 
-const SkillsDetails = ({ skill }) => {
+import { AnimatePresence, motion as m } from "framer-motion";
+
+const SkillsDetails = ({ skill, keyProp }) => {
   return (
-    <div className="mt-5">
-      <ul className="max-w-7xl list-none space-y-8 border-4 lg:border-8 rounded-xl lg:rounded-3xl p-6">
-        {skill.details.map((detail, index) => (
-          <li
-            key={`skill-detail-${index}`}
-            className="text-white font-semibold text-[10px] xs:text-[14px] md:text-[18px] lg:text-[22px] xl:text-[28px] lg:leading-[30px]"
-            dangerouslySetInnerHTML={{ __html: detail }}
-          />
-        ))}
-      </ul>
-    </div>
+    <AnimatePresence mode="wait">
+      <m.div
+        key={keyProp}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        className="mt-5"
+      >
+        <ul className="max-w-7xl list-none space-y-8 border-4 lg:border-8 rounded-xl lg:rounded-3xl p-6">
+          {skill.details.map((detail, index) => (
+            <li
+              key={`skill-detail-${index}`}
+              className="text-white font-semibold text-[10px] xs:text-[14px] md:text-[18px] lg:text-[22px] xl:text-[28px] lg:leading-[30px]"
+              dangerouslySetInnerHTML={{ __html: detail }}
+            />
+          ))}
+        </ul>
+      </m.div>
+    </AnimatePresence>
   );
 };
 
 const Skills = () => {
   const [selectedSkill, setSelectedSkill] = useState(skills[0]);
   const [isMobile, setIsMobile] = useState(false);
+  const [detailsKey, setDetailsKey] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -111,7 +123,10 @@ const Skills = () => {
             <SkillsCard
               key={`skill-${index}`}
               skill={skill}
-              onClick={() => setSelectedSkill(skill)}
+              onClick={() => {
+                setSelectedSkill(skill);
+                setDetailsKey((k) => k + 1);
+              }}
               isActive={selectedSkill === skill}
               isMobile={isMobile}
             />
@@ -119,7 +134,7 @@ const Skills = () => {
         </div>
 
         <div className="justify-center z-10 sm:block hidden">
-          <SkillsDetails skill={selectedSkill} />
+          <SkillsDetails skill={selectedSkill} keyProp={detailsKey} />
         </div>
       </div>
     </div>
