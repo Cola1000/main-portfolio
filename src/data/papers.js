@@ -27,7 +27,7 @@ export const papers = [
       "This guide walks a first-time Linux user through a manual Arch Linux installation (UEFI/GPT) without the graphical installer. You'll create a bootable USB, partition and format disks, mount and generate fstab, and install a minimal base system with pacstrap. Then we configure timezone, locale, users and sudo, networking, and set up GRUB to boot. After first boot we add a friendly desktop (KDE Plasma), essential tools, and AUR support with yay, plus some quality-of-life checks and safe cleanup commands. Optional chapters introduce networking hardening (DoH + firewall), virtualization/containers, Wine, and ricing idea(s).",
     tags: ["Linux", "Arch Linux", "Installation", "UEFI", "GPT", "KDE Plasma", "Networking", "Virtualization", "Wine"],
     links: [
-      { label: "Read", href: "src/assets/How to Install Arch Linux.pdf" },
+      { label: "Read", href: "public/assets/How to Install Arch Linux.pdf" },
     ],
   },
     {
@@ -37,7 +37,7 @@ export const papers = [
       "My personal light novel about a girl and her classmates who got transported to a fantasy world. It is written fully in English.",
     tags: ["Isekai", "Anime", "Light Novel", "Fantasy", "Action"],
     links: [
-      { label: "Read", href: "src/assets/Vol.1 Ver. 1.2 PDF.pdf" },
+      { label: "Read", href: "public/assets/Vol.1 Ver. 1.2 PDF.pdf" },
     ],
   },
 ];
