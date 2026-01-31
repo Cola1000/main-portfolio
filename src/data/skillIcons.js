@@ -1,3 +1,5 @@
+import kafkaIcon from "../assets/apache-kafka.png";
+
 export const skillIcons = [
   {
     href: "https://www.blender.org/",
@@ -126,7 +128,7 @@ export const skillIcons = [
   },
   {
     href: "https://kafka.apache.org/",
-    src: "src/assets/apache-kafka.png",
+    src: kafkaIcon,
     alt: "kafka",
   },
   {
