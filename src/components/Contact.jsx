@@ -104,7 +104,7 @@ const Contact = () => {
             YouTube
           </a>
           <a 
-            href="/cv.pdf" 
+            href="/main-portfolio/Rhio Bimo Prakoso S - CV.pdf" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white transition-colors"

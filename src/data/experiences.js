@@ -1,7 +1,9 @@
 import {
   LabSister,
   hmifitb,
-  itb
+  itb,
+  jcrc,
+  genshiken
 } from "../assets";
 
 export const experiences = [
@@ -10,7 +12,7 @@ export const experiences = [
     company_name: "Laboratorium Sistem Terdistribusi STEI ITB",
     date: "Jul 2025 - Present",
     details: [
-      "Managed and evaluated <span style='color: white;'>weekly laboratory practicums and large-scale projects</span> for <span style='color: white;'>100+ students</span> in operating systems, computer networking, low-level programming, and distributed systems.",
+      "Managed and evaluated <span style='color: white;'>weekly laboratory practicums and large-scale projects</span> for <span style='color: white;'>140+ students</span> in operating systems, computer networking, low-level programming, and distributed systems.",
       "Performed <span style='color: white;'>solo and team-based grading</span>, reviewing system-level code and architectural decisions for correctness, performance, and concurrency issues.",
       "Assisted students in debugging <span style='color: white;'>race conditions, deadlocks, and networking failures</span>, translating theoretical concepts into practical system behavior.",
       "Acted as a technical mentor during lab sessions, helping students build <span style='color: white;'>reliable and scalable distributed solutions</span>.",
@@ -24,8 +26,20 @@ export const experiences = [
     details: [
       "Active member of the Informatics student association at ITB, contributing to academic and community activities.",
       "Served as an <span style='color: white;'>emcee for a reunion event</span>, supporting event coordination and audience engagement.",
+      "Created engagement via puzzle-solving for pre-inauguration activity"
     ],
     image: hmifitb,
+  },
+  {
+    title: "Internal Affairs",
+    company_name: "Genshiken ITB",
+    date: "2023 - Present",
+    details: [
+      "Made a hololive fan-made rhythm game.",
+      "Responsible for maintaining relations between member and their activities within the organization.",
+      "Aid in making Genshiken website.",
+    ],
+    image: genshiken,
   },
   {
     title: "Informatics (Computer Science)",
@@ -36,5 +50,16 @@ export const experiences = [
       "Developed practical understanding of <span style='color: white;'>operating systems, networking, and distributed computing</span> through hands-on projects and laboratory work.",
     ],
     image: itb,
+  },
+    {
+    title: "Club President",
+    company_name: "Japanese Research & Culture Clubs",
+    date: "2022 - 2023",
+    details: [
+      "Re-established merit of the club after pandemic era ",
+      "Created long lasting relationships between alumni and current members.",
+      "Managed to <span style='color: white;'>increase</span> the member count from 3 member to <span style='color: white;'>20+ </span>members in my reign.",
+    ],
+    image: jcrc,
   },
 ];

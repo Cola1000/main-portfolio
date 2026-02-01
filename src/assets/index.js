@@ -11,7 +11,10 @@ import holocure from "./holocure.jpg";
 import LabSister from "./sister.svg";
 import hmifitb from "./hmifitb.png";
 import itb from "./logoitb.png";
+import jcrc from "./jcrc.png";
+import genshiken from "./genshiken.svg";
+import compact_foto from "./Pasfoto.jpg";
 
-export { close, logo, menu, time_tracking_app, ricing, eduplore, mbn, fractals, holocure, LabSister, hmifitb, itb };
+export { close, logo, menu, time_tracking_app, ricing, eduplore, mbn, fractals, holocure, LabSister, hmifitb, itb, jcrc, genshiken, compact_foto };
 
     

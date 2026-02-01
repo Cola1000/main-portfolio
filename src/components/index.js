@@ -1,3 +1,4 @@
+import Compact from "./Compact";
 import Contact from "./Contact";
 import Experience from "./Experience";
 import Hero from "./Hero";
@@ -10,6 +11,6 @@ import Skills from "./Skills";
 import WaterRippleCanvas from "./WaterRipple";
 
 export {
-    CanvasLoader, Contact, Experience, Hero, Navbar, Papers, Portfolio, Position, Skills, WaterRippleCanvas
+    CanvasLoader, Compact, Contact, Experience, Hero, Navbar, Papers, Portfolio, Position, Skills, WaterRippleCanvas
 };
 

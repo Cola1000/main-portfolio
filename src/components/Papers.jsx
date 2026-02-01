@@ -91,7 +91,7 @@ const Papers = () => {
 
       <div className="px-6 md:px-20 lg:px-40">
         <p className="text-secondary text-sm sm:text-base md:text-lg mb-8 text-center">
-          -- Papers tests our theoretical side and writing it tests our ability to communicate complex idea clearly. --
+          -- Papers challenge our theory; writing them challenges our clarity. --
         </p>
 
         <div>

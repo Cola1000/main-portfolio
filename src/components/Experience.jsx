@@ -54,7 +54,7 @@ const ExperienceDetails = ({ experience, keyProp }) => {
           {experience.image && (
             <img
               src={experience.image}
-              alt={experience.title}
+              alt={experience.company_name}
               className="w-40 h-40 object-contain rounded-xl mb-4"
             />
           )}

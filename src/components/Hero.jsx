@@ -1,9 +1,15 @@
+import { motion } from "framer-motion";
 import Position from "./Position";
 import WaterRippleCanvas from "./WaterRipple";
 
 const Hero = ({ scrollContainer }) => {
   return (
-    <section className="parallax bg-black relative">
+    <motion.section 
+      className="parallax bg-black relative"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2, ease: "easeIn" }}
+    >
       <WaterRippleCanvas />
       <div className='w-full px-6 sm:px-16 lg:px-24 xl:px-32 2xl:px-40 flex flex-col lg:flex-row items-center lg:items-start gap-8 relative' style={{ zIndex: 1 }}>
         <div className="flex-1">
@@ -18,7 +24,7 @@ const Hero = ({ scrollContainer }) => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

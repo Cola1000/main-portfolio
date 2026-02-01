@@ -1,9 +1,11 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as THREE from "three";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Emissive glowing cube
-const EmissiveCube = () => {
+const EmissiveCube = ({ onCubeClick }) => {
   const cubeRef = useRef();
   
   useFrame(() => {
@@ -14,7 +16,7 @@ const EmissiveCube = () => {
   });
   
   return (
-    <mesh position={[0, 5, -3]} ref={cubeRef}>
+    <mesh position={[0, 5, -3]} ref={cubeRef} onClick={onCubeClick}>
       <boxGeometry args={[3, 3, 3]} />
       <meshBasicMaterial color="#ffffff" toneMapped={false} />
     </mesh>
@@ -166,6 +168,16 @@ const WaterPlane = () => {
 };
 
 const WaterRippleCanvas = () => {
+  const [showFlash, setShowFlash] = useState(false);
+  const navigate = useNavigate();
+
+  const handleCubeClick = () => {
+    setShowFlash(true);
+    setTimeout(() => {
+      navigate("/main-portfolio/compact");
+    }, 1500);
+  };
+
   return (
     <div className="absolute bottom-0 left-0 w-full h-[500px] pointer-events-none">
       <Canvas
@@ -173,10 +185,43 @@ const WaterRippleCanvas = () => {
         gl={{ antialias: true }}
       >
         <Suspense fallback={null}>
-          <EmissiveCube />
+          <EmissiveCube onCubeClick={handleCubeClick} />
           <WaterPlane />
         </Suspense>
       </Canvas>
+      
+      {/* Static flashing CTA text */}
+      <motion.div
+        className="absolute -top-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center pointer-events-none"
+        animate={{ opacity: [1, 0.3, 1] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      >
+        <div className="text-white font-bold text-[14px] sm:text-[16px] md:text-[18px] whitespace-nowrap">
+          Click for compact mode
+        </div>
+        <div className="text-white sm:text-[24px]">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-big-down-icon lucide-arrow-big-down"><path d="M15 11a1 1 0 0 0 1 1h2.939a1 1 0 0 1 .75 1.811l-6.835 6.836a1.207 1.207 0 0 1-1.707 0L4.31 13.81a1 1 0 0 1 .75-1.811H8a1 1 0 0 0 1-1V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1z"/></svg>
+
+        </div>
+      </motion.div>
+
+      {/* Flash animation overlay */}
+      <AnimatePresence>
+        {showFlash && (
+          <motion.div
+            initial={{ scale: 0, opacity: 1 }}
+            animate={{ scale: 10, opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeIn" }}
+            className="fixed inset-0 pointer-events-none z-[9999]"
+            style={{
+              background: "radial-gradient(circle, white 0%, transparent 70%)",
+              transformOrigin: "center center",
+            }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

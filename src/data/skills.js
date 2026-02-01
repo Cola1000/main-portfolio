@@ -9,7 +9,7 @@ export const skills = [
       "Computer Networking",
       "DNS & DHCP",
       "Concurrency & Synchronization",
-      "Election Algorithms",
+      "Consensus Algorithms",
       "32-bit System Architecture",
     ],
   },

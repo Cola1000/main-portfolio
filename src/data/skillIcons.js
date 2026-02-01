@@ -156,4 +156,19 @@ export const skillIcons = [
     src: "https://upload.wikimedia.org/wikipedia/en/6/66/Clip_Studio_Paint_app_logo.png",
     alt: "clip studio paint",
   },
+  {
+    href: "https://go.dev/",
+    src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg",
+    alt: "go",
+  },
+  {
+    href: "https://www.oracle.com/",
+    src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg",
+    alt: "oracle",
+  },
+  {
+    href: "https://www.adobe.com/products/premiere.html",
+    src: "https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg",
+    alt: "premiere pro",
+  },
 ];
