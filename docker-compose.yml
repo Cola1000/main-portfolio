@@ -1,0 +1,8 @@
+services:
+  portfolio-site:
+    build: .
+    image: portfolio-site:latest
+    container_name: portfolio-site
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8001:80"
